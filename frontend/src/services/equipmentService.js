@@ -19,6 +19,11 @@ export const equipmentService = {
     return response.data;
   },
 
+  search: async (searchRequest) => {
+    const response = await api.post('/equipment/search', searchRequest);
+    return response.data;
+  },
+
   create: async (equipmentData) => {
     const response = await api.post('/equipment', equipmentData);
     return response.data;
