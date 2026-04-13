@@ -3,6 +3,7 @@ package com.univer.booking.controller;
 import com.univer.booking.dto.ApiResponse;
 import com.univer.booking.dto.EquipmentRequest;
 import com.univer.booking.dto.EquipmentResponse;
+import com.univer.booking.dto.EquipmentSearchRequest;
 import com.univer.booking.model.User;
 import com.univer.booking.service.EquipmentService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -50,6 +52,14 @@ public class EquipmentController {
             @Parameter(description = "End time") @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant endTime) {
         List<EquipmentResponse> equipment = equipmentService.getAvailableEquipment(startTime, endTime);
         return ResponseEntity.ok(ApiResponse.success(equipment));
+    }
+
+    @PostMapping("/search")
+    @Operation(summary = "Search equipment with advanced filters")
+    public ResponseEntity<ApiResponse<Page<EquipmentResponse>>> searchEquipment(
+            @RequestBody EquipmentSearchRequest request) {
+        Page<EquipmentResponse> results = equipmentService.searchEquipment(request);
+        return ResponseEntity.ok(ApiResponse.success(results));
     }
 
     @PostMapping
