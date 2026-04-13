@@ -126,15 +126,15 @@ export default function Login() {
           Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
         </div>
 
-        <div style={{ marginTop: '20px', padding: '16px', background: '#f8fafc', borderRadius: '8px', fontSize: '13px' }}>
+        <div style={{ marginTop: '20px', padding: '16px', background: 'var(--light)', borderRadius: '8px', fontSize: '13px', color: 'var(--dark)' }}>
           <strong>Тестовые аккаунты:</strong><br />
-          <code style={{ display: 'block', marginTop: '8px', padding: '8px', background: '#e2e8f0', borderRadius: '4px' }}>
+          <code style={{ display: 'block', marginTop: '8px', padding: '8px', background: 'var(--white)', borderRadius: '4px', color: 'var(--dark)', border: '1px solid #e2e8f0' }}>
             admin / password
           </code>
-          <code style={{ display: 'block', marginTop: '4px', padding: '8px', background: '#e2e8f0', borderRadius: '4px' }}>
+          <code style={{ display: 'block', marginTop: '4px', padding: '8px', background: 'var(--white)', borderRadius: '4px', color: 'var(--dark)', border: '1px solid #e2e8f0' }}>
             student1 / password
           </code>
-          <code style={{ display: 'block', marginTop: '4px', padding: '8px', background: '#e2e8f0', borderRadius: '4px' }}>
+          <code style={{ display: 'block', marginTop: '4px', padding: '8px', background: 'var(--white)', borderRadius: '4px', color: 'var(--dark)', border: '1px solid #e2e8f0' }}>
             professor1 / password
           </code>
         </div>

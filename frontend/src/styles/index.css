@@ -24,7 +24,7 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--light);
   min-height: 100vh;
   color: var(--dark);
 }
@@ -1145,7 +1145,7 @@ body {
 
 /* --- Hero Section --- */
 .hero {
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
   padding: 80px 0 60px;
   text-align: center;
   color: white;
@@ -1248,7 +1248,8 @@ body {
 /* --- Features --- */
 .features {
   padding: 80px 20px;
-  background: white;
+  background: var(--white);
+  color: var(--dark);
 }
 
 .features__header {
@@ -1290,8 +1291,9 @@ body {
 .benefits {
   margin-top: 60px;
   padding: 40px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%);
   border-radius: 16px;
+  color: var(--dark);
 }
 
 .benefits__grid {
@@ -1327,6 +1329,7 @@ body {
   padding: 80px 20px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   text-align: center;
+  color: white;
 }
 
 .cta__title {
@@ -1757,8 +1760,14 @@ body {
   padding: 80px 20px;
 }
 
-.section--white { background: white; }
-.section--light { background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%); }
+.section--white { 
+  background: var(--white); 
+  color: var(--dark);
+}
+.section--light { 
+  background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%); 
+  color: var(--dark);
+}
 
 .section-header {
   text-align: center;
@@ -1793,8 +1802,9 @@ body {
 
 .about-stats-bg {
   padding: 40px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%);
   border-radius: 16px;
+  color: var(--dark);
 }
 
 .about-stats {

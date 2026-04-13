@@ -45,28 +45,28 @@ export default function Contacts() {
       title: 'Email',
       value: 'support@univer-booking.edu',
       href: 'mailto:support@univer-booking.edu',
-      color: '#4f46e5',
+      color: 'var(--primary)',
     },
     {
       icon: <FiPhone size={24} />,
       title: 'Телефон',
       value: '+7 (495) 123-45-67',
       href: 'tel:+74951234567',
-      color: '#10b981',
+      color: 'var(--success)',
     },
     {
       icon: <FiMapPin size={24} />,
       title: 'Адрес',
       value: 'Университетский кампус, Корпус А, Аудитория 101',
       href: '#',
-      color: '#f59e0b',
+      color: 'var(--warning)',
     },
     {
       icon: <FiClock size={24} />,
       title: 'Часы работы',
       value: 'Пн - Пт: 9:00 - 18:00',
       href: '#',
-      color: '#06b6d4',
+      color: 'var(--secondary)',
     },
   ];
 
@@ -110,8 +110,9 @@ export default function Contacts() {
       {/* Contact Info Cards */}
       <section style={{
         padding: '60px 20px',
-        background: 'white',
+        background: 'var(--white)',
         marginTop: '-40px',
+        color: 'var(--dark)',
       }}>
         <div className="container">
           <div className="grid grid-4">
@@ -150,7 +151,8 @@ export default function Contacts() {
       {/* Contact Form & FAQ Section */}
       <section style={{
         padding: '80px 20px',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
+        background: 'linear-gradient(135deg, var(--light) 0%, var(--white) 100%)',
+        color: 'var(--dark)',
       }}>
         <div className="container">
           <div style={{
@@ -360,8 +362,9 @@ export default function Contacts() {
 
               <div style={{
                 padding: '24px',
-                background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                background: 'linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%)',
                 borderRadius: '12px',
+                color: 'var(--dark)',
               }}>
                 <div style={{
                   display: 'flex',
@@ -396,10 +399,11 @@ export default function Contacts() {
                 padding: '16px',
                 background: '#fef3c7',
                 borderRadius: '8px',
-                borderLeft: '4px solid #f59e0b',
+                borderLeft: '4px solid var(--warning)',
+                color: '#92400e',
               }}>
                 <p style={{ fontSize: '14px', color: '#92400e', margin: 0 }}>
-                  <strong>Примечание:</strong> Для срочных вопросов вне часов работы поддержки, 
+                  <strong>Примечание:</strong> Для срочных вопросов вне часов работы поддержки,
                   пожалуйста, напишите нам, и мы ответим как можно скорее.
                 </p>
               </div>

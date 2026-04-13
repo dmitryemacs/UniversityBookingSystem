@@ -92,19 +92,19 @@ export default function About() {
                 icon: <FiZap size={40} />,
                 title: 'Эффективность',
                 description: 'Мы ценим ваше время. Процесс бронирования занимает менее 2 минут от начала до конца.',
-                color: '#f59e0b',
+                color: 'var(--warning)',
               },
               {
                 icon: <FiShield size={40} />,
                 title: 'Надёжность',
                 description: 'Ваши бронирования подтверждены и отслеживаются. Никаких неопределённостей или двойных бронирований.',
-                color: '#10b981',
+                color: 'var(--success)',
               },
               {
                 icon: <FiHeart size={40} />,
                 title: 'Ориентированность на пользователя',
                 description: 'Разработано с учётом реальных отзывов пользователей. Мы постоянно улучшаемся на основе ваших потребностей.',
-                color: '#ef4444',
+                color: 'var(--danger)',
               },
             ].map((value, index) => (
               <div key={index} className="card value-card">

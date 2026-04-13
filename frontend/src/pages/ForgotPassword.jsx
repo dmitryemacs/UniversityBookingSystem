@@ -38,10 +38,10 @@ export default function ForgotPassword() {
             </p>
           </div>
 
-          <div style={{ 
-            padding: '20px', 
-            background: '#f0fdf4', 
-            borderRadius: '8px', 
+          <div style={{
+            padding: '20px',
+            background: '#f0fdf4',
+            borderRadius: '8px',
             marginBottom: '24px',
             border: '1px solid #bbf7d0'
           }}>

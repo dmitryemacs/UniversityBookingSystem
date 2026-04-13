@@ -41,9 +41,9 @@ export default function Register() {
 
   const getPasswordStrengthLabel = () => {
     const score = getPasswordStrengthScore();
-    if (score <= 2) return { text: 'Слабый', color: '#ef4444' };
-    if (score <= 4) return { text: 'Средний', color: '#f59e0b' };
-    return { text: 'Надёжный', color: '#10b981' };
+    if (score <= 2) return { text: 'Слабый', color: 'var(--danger)' };
+    if (score <= 4) return { text: 'Средний', color: 'var(--warning)' };
+    return { text: 'Надёжный', color: 'var(--success)' };
   };
 
   const handleChange = (e) => {
@@ -99,7 +99,7 @@ export default function Register() {
   const strengthScore = getPasswordStrengthScore();
 
   const RequirementItem = ({ met, text }) => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: met ? '#10b981' : '#64748b' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: met ? 'var(--success)' : 'var(--gray)' }}>
       {met ? <FiCheck size={14} /> : <FiX size={14} />}
       <span>{text}</span>
     </div>
@@ -198,7 +198,7 @@ export default function Register() {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: '#64748b',
+                  color: 'var(--gray)',
                   fontSize: '18px',
                   display: 'flex',
                   alignItems: 'center',
@@ -209,9 +209,9 @@ export default function Register() {
             </div>
 
             {formData.password && (
-              <div style={{ marginTop: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+              <div style={{ marginTop: '12px', padding: '12px', background: 'var(--light)', borderRadius: '8px', color: 'var(--dark)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '12px', fontWeight: '600', color: '#64748b' }}>Надёжность пароля</span>
+                  <span style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gray)' }}>Надёжность пароля</span>
                   <span style={{ fontSize: '12px', fontWeight: '600', color: strengthLabel.color }}>{strengthLabel.text}</span>
                 </div>
                 <div style={{ height: '4px', background: '#e2e8f0', borderRadius: '2px', overflow: 'hidden', marginBottom: '12px' }}>
@@ -260,7 +260,7 @@ export default function Register() {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: '#64748b',
+                  color: 'var(--gray)',
                   fontSize: '18px',
                   display: 'flex',
                   alignItems: 'center',
@@ -270,7 +270,7 @@ export default function Register() {
               </button>
             </div>
             {formData.confirmPassword && formData.password !== formData.confirmPassword && (
-              <div style={{ marginTop: '4px', fontSize: '12px', color: '#ef4444' }}>
+              <div style={{ marginTop: '4px', fontSize: '12px', color: 'var(--danger)' }}>
                 Пароли не совпадают
               </div>
             )}
