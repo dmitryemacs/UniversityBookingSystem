@@ -30,6 +30,18 @@ JWT_SECRET=$(openssl rand -base64 48 2>/dev/null || head -c 64 /dev/urandom | ba
 railway variables set JWT_SECRET="$JWT_SECRET"
 
 echo ""
+echo "📋 Railway DATABASE_* variables (auto-provided by Railway):"
+echo "   DATABASE_URL           - internal postgresql://..."
+echo "   DATABASE_PUBLIC_URL    - external postgresql://..."
+echo "   DATABASE_USER          - username"
+echo "   DATABASE_PASSWORD      - password"
+echo "   DATABASE_HOST          - internal host"
+echo "   DATABASE_PUBLIC_HOST   - public host"
+echo "   DATABASE_PORT          - port (5432)"
+echo "   DATABASE_NAME          - database name"
+echo "   Application uses DATABASE_URL first, then falls back to individual vars."
+
+echo ""
 echo "🚀 Deploying..."
 railway up --detach
 
