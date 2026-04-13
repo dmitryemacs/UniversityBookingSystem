@@ -27,72 +27,46 @@ export default function About() {
       <Header />
 
       {/* Hero Section */}
-      <section className="hero-section" style={{
-        background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)',
-        textAlign: 'center',
-        color: 'white',
-      }}>
+      <section className="hero">
         <div className="container">
-          <h1 className="hero-title" style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px' }}>
+          <h1 className="hero__title">
             О нашем проекте
           </h1>
-          <p className="hero-subtitle" style={{ fontSize: '20px', opacity: '0.9', maxWidth: '700px', margin: '0 auto' }}>
+          <p className="hero__subtitle">
             Делаем бронирование университетского оборудования простым, эффективным и доступным для всех
           </p>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="mission-section" style={{
-        padding: '80px 20px',
-        background: 'white',
-      }}>
+      <section className="section section--white">
         <div className="container">
-          <div className="mission-grid" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '40px',
-            alignItems: 'center',
-          }}>
+          <div className="mission-grid">
             <div>
-              <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '20px' }}>
-                Наша миссия
-              </h2>
-              <p style={{ fontSize: '18px', color: 'var(--gray)', lineHeight: '1.8', marginBottom: '20px' }}>
+              <h2 className="about-heading">Наша миссия</h2>
+              <p className="about-text">
                 Мы стремимся упростить процесс бронирования оборудования в университетах,
                 облегчая студентам, преподавателям и исследователям доступ к инструментам,
                 необходимым для их учебной и исследовательской деятельности.
               </p>
-              <p style={{ fontSize: '18px', color: 'var(--gray)', lineHeight: '1.8' }}>
+              <p className="about-text">
                 Наша платформа устраняет сложности ручных систем бронирования, снижает конфликты
                 и двойные бронирования, обеспечивает видимость доступности оборудования в реальном времени.
               </p>
             </div>
-            <div style={{
-              padding: '40px',
-              background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-              borderRadius: '16px',
-            }}>
-              <div className="mission-stats" style={{ display: 'grid', gap: '20px' }}>
+            <div className="about-stats-bg">
+              <div className="about-stats">
                 {[
                   { icon: <FiUsers size={32} />, title: '500+', label: 'Активных пользователей' },
                   { icon: <FiCalendar size={32} />, title: '1000+', label: 'Бронирований в месяц' },
                   { icon: <FiCheckCircle size={32} />, title: '98%', label: 'Удовлетворённость' },
                   { icon: <FiShield size={32} />, title: '24/7', label: 'Доступность системы' },
                 ].map((stat, index) => (
-                  <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '16px',
-                    padding: '16px',
-                    background: 'white',
-                    borderRadius: '12px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                  }}>
-                    <div style={{ color: 'var(--primary)' }}>{stat.icon}</div>
+                  <div key={index} className="about-stat">
+                    <div className="about-stat-icon">{stat.icon}</div>
                     <div>
-                      <div style={{ fontSize: '24px', fontWeight: '700', color: 'var(--dark)' }}>{stat.title}</div>
-                      <div style={{ fontSize: '14px', color: 'var(--gray)' }}>{stat.label}</div>
+                      <div className="about-stat-value">{stat.title}</div>
+                      <div className="about-stat-label">{stat.label}</div>
                     </div>
                   </div>
                 ))}
@@ -103,16 +77,11 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section style={{
-        padding: '80px 20px',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
-      }}>
+      <section className="section section--light">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
-              Наши ценности
-            </h2>
-            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
+          <div className="section-header">
+            <h2 className="section-title">Наши ценности</h2>
+            <p className="section-subtitle">
               Что движет нами для создания лучшего опыта бронирования
             </p>
           </div>
@@ -138,29 +107,12 @@ export default function About() {
                 color: '#ef4444',
               },
             ].map((value, index) => (
-              <div key={index} className="card" style={{
-                textAlign: 'center',
-                padding: '40px 24px',
-              }}>
-                <div style={{
-                  width: '100px',
-                  height: '100px',
-                  margin: '0 auto 24px',
-                  background: `linear-gradient(135deg, ${value.color}20 0%, ${value.color}40 100%)`,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: value.color,
-                }}>
+              <div key={index} className="card value-card">
+                <div className="value-icon" style={{ background: `linear-gradient(135deg, ${value.color}20 0%, ${value.color}40 100%)`, color: value.color }}>
                   {value.icon}
                 </div>
-                <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px', color: 'var(--dark)' }}>
-                  {value.title}
-                </h3>
-                <p style={{ fontSize: '15px', color: 'var(--gray)', lineHeight: '1.6' }}>
-                  {value.description}
-                </p>
+                <h3 className="value-title">{value.title}</h3>
+                <p className="value-desc">{value.description}</p>
               </div>
             ))}
           </div>
@@ -168,41 +120,20 @@ export default function About() {
       </section>
 
       {/* Technology Section */}
-      <section style={{
-        padding: '80px 20px',
-        background: 'white',
-      }}>
+      <section className="section section--white">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
-              Технологический стек
-            </h2>
-            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
+          <div className="section-header">
+            <h2 className="section-title">Технологический стек</h2>
+            <p className="section-subtitle">
               Построено с использованием современных, надёжных технологий
             </p>
           </div>
 
-          <div className="tech-tags" style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'center',
-          }}>
+          <div className="tech-tags">
             {technologies.map((tech, index) => (
-              <div key={index} style={{
-                padding: '20px 32px',
-                background: 'white',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                textAlign: 'center',
-                minWidth: '150px',
-                border: '2px solid',
-                borderColor: tech.color,
-              }}>
-                <div style={{ fontSize: '18px', fontWeight: '600', color: 'var(--dark)', marginBottom: '4px' }}>
-                  {tech.name}
-                </div>
-                <div style={{ fontSize: '13px', color: 'var(--gray)' }}>{tech.category}</div>
+              <div key={index} className="tech-tag" style={{ borderColor: tech.color }}>
+                <div className="tech-name">{tech.name}</div>
+                <div className="tech-cat">{tech.category}</div>
               </div>
             ))}
           </div>
@@ -210,31 +141,21 @@ export default function About() {
       </section>
 
       {/* Team Section */}
-      <section style={{
-        padding: '80px 20px',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-      }}>
+      <section className="section section--light">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
-              Наша команда
-            </h2>
-            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
+          <div className="section-header">
+            <h2 className="section-title">Наша команда</h2>
+            <p className="section-subtitle">
               Талантливые люди, делающие это возможным
             </p>
           </div>
 
           <div className="grid grid-4">
             {team.map((member, index) => (
-              <div key={index} className="card" style={{
-                textAlign: 'center',
-                padding: '32px 20px',
-              }}>
-                <div style={{ fontSize: '64px', marginBottom: '16px' }}>{member.icon}</div>
-                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'var(--dark)', marginBottom: '8px' }}>
-                  {member.name}
-                </h3>
-                <p style={{ fontSize: '14px', color: 'var(--gray)' }}>{member.role}</p>
+              <div key={index} className="card team-card">
+                <div className="team-icon">{member.icon}</div>
+                <h3 className="team-name">{member.name}</h3>
+                <p className="team-role">{member.role}</p>
               </div>
             ))}
           </div>
@@ -242,37 +163,18 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section" style={{
-        padding: '80px 20px',
-        background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
-        textAlign: 'center',
-      }}>
+      <section className="cta">
         <div className="container">
-          <h2 className="cta-title" style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
-            Есть вопросы?
-          </h2>
-          <p className="cta-subtitle" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
+          <h2 className="cta__title">Есть вопросы?</h2>
+          <p className="cta__subtitle">
             Мы здесь, чтобы помочь! Свяжитесь с нами в любое время.
           </p>
-          <div className="quick-actions" style={{ justifyContent: 'center' }}>
-            <Link to="/contacts" className="btn" style={{
-              background: 'white',
-              color: 'var(--primary)',
-              fontSize: '16px',
-              padding: '14px 32px',
-              fontWeight: '600',
-            }}>
-              <FiMail style={{ marginRight: '8px' }} /> Связаться с нами
+          <div className="cta__actions">
+            <Link to="/contacts" className="btn btn--lg btn--white">
+              <FiMail className="btn-icon-left" /> Связаться с нами
             </Link>
             {!user && (
-              <Link to="/register" className="btn" style={{
-                background: 'transparent',
-                border: '2px solid white',
-                color: 'white',
-                fontSize: '16px',
-                padding: '14px 32px',
-                fontWeight: '600',
-              }}>
+              <Link to="/register" className="btn btn--lg btn--white-outline">
                 Начать работу
               </Link>
             )}

@@ -93,67 +93,39 @@ export default function HomePage() {
 
       {/* Hero Section for Guests */}
       {!user && (
-        <section className="hero-section" style={{
-          background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)',
-          textAlign: 'center',
-          color: 'white',
-        }}>
+        <section className="hero">
           <div className="container">
-            <h1 className="hero-title" style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+            <h1 className="hero__title">
               Бронирование Университетского Оборудования
             </h1>
-            <p className="hero-subtitle" style={{ fontSize: '20px', marginBottom: '40px', opacity: '0.9', maxWidth: '600px', margin: '0 auto 40px' }}>
+            <p className="hero__subtitle">
               Бронируйте лабораторное оборудование, компьютеры, проекторы и многое другое с лёгкостью.
             </p>
-            <div className="quick-actions" style={{ justifyContent: 'center' }}>
-              <Link to="/register" className="btn" style={{
-                background: 'white',
-                color: 'var(--primary)',
-                fontSize: '16px',
-                padding: '14px 32px',
-                fontWeight: '600',
-              }}>
-                Начать работу <FiArrowRight style={{ marginLeft: '8px' }} />
+            <div className="hero__actions">
+              <Link to="/register" className="btn btn--lg btn--white">
+                Начать работу <FiArrowRight className="btn__icon" />
               </Link>
-              <Link to="/equipment" className="btn" style={{
-                background: 'transparent',
-                border: '2px solid white',
-                color: 'white',
-                fontSize: '16px',
-                padding: '14px 32px',
-                fontWeight: '600',
-              }}>
+              <Link to="/equipment" className="btn btn--lg btn--white-outline">
                 Смотреть оборудование
               </Link>
             </div>
 
-            {/* Quick Stats */}
-            <div className="hero-stats" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-              gap: '24px',
-              maxWidth: '800px',
-              margin: '60px auto 0',
-              padding: '32px',
-              background: 'rgba(255,255,255,0.1)',
-              borderRadius: '16px',
-              backdropFilter: 'blur(10px)',
-            }}>
-              <div>
-                <div style={{ fontSize: '36px', fontWeight: '700' }}>{stats.totalEquipment}</div>
-                <div style={{ fontSize: '14px', opacity: '0.9' }}>Всего оборудования</div>
+            <div className="hero__stats">
+              <div className="hero__stat">
+                <div className="hero__stat-value">{stats.totalEquipment}</div>
+                <div className="hero__stat-label">Всего оборудования</div>
               </div>
-              <div>
-                <div style={{ fontSize: '36px', fontWeight: '700', color: '#10b981' }}>{stats.availableEquipment}</div>
-                <div style={{ fontSize: '14px', opacity: '0.9' }}>Доступно сейчас</div>
+              <div className="hero__stat">
+                <div className="hero__stat-value hero__stat-value--green">{stats.availableEquipment}</div>
+                <div className="hero__stat-label">Доступно сейчас</div>
               </div>
-              <div>
-                <div style={{ fontSize: '36px', fontWeight: '700', color: '#f59e0b' }}>24/7</div>
-                <div style={{ fontSize: '14px', opacity: '0.9' }}>Онлайн доступ</div>
+              <div className="hero__stat">
+                <div className="hero__stat-value hero__stat-value--orange">24/7</div>
+                <div className="hero__stat-label">Онлайн доступ</div>
               </div>
-              <div>
-                <div style={{ fontSize: '36px', fontWeight: '700', color: '#06b6d4' }}>100+</div>
-                <div style={{ fontSize: '14px', opacity: '0.9' }}>Довольных пользователей</div>
+              <div className="hero__stat">
+                <div className="hero__stat-value hero__stat-value--cyan">100+</div>
+                <div className="hero__stat-label">Довольных пользователей</div>
               </div>
             </div>
           </div>
@@ -175,42 +147,42 @@ export default function HomePage() {
               <div className="stat-card">
                 <div className="stat-value">{stats.totalEquipment}</div>
                 <div className="stat-label">
-                  <FiGrid style={{ display: 'inline', marginRight: '6px' }} />
+                  <FiGrid className="stat-icon" />
                   Всего оборудования
                 </div>
               </div>
               <div className="stat-card">
-                <div className="stat-value" style={{ color: 'var(--success)' }}>
+                <div className="stat-value stat-value--success">
                   {stats.availableEquipment}
                 </div>
                 <div className="stat-label">
-                  <FiCheckCircle style={{ display: 'inline', marginRight: '6px' }} />
+                  <FiCheckCircle className="stat-icon" />
                   Доступно
                 </div>
               </div>
               <div className="stat-card">
-                <div className="stat-value" style={{ color: 'var(--secondary)' }}>
+                <div className="stat-value stat-value--info">
                   {stats.myBookings}
                 </div>
                 <div className="stat-label">
-                  <FiCalendar style={{ display: 'inline', marginRight: '6px' }} />
+                  <FiCalendar className="stat-icon" />
                   Мои бронирования
                 </div>
               </div>
               <div className="stat-card">
-                <div className="stat-value" style={{ color: 'var(--warning)' }}>
+                <div className="stat-value stat-value--warning">
                   {stats.pendingBookings}
                 </div>
                 <div className="stat-label">
-                  <FiClock style={{ display: 'inline', marginRight: '6px' }} />
+                  <FiClock className="stat-icon" />
                   Ожидают
                 </div>
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div className="card" style={{ marginBottom: '32px' }}>
-              <h2 style={{ marginBottom: '20px', fontSize: '18px' }}>Быстрые действия</h2>
+            <div className="card card--actions">
+              <h2 className="card__title">Быстрые действия</h2>
               <div className="quick-actions">
                 <Link to="/equipment" className="btn btn-primary">
                   <FiGrid /> Смотреть оборудование
@@ -225,8 +197,8 @@ export default function HomePage() {
             </div>
 
             {/* Recent Equipment */}
-            <div>
-              <h2 style={{ marginBottom: '20px', fontSize: '18px', color: 'white' }}>
+            <div className="recent-section">
+              <h2 className="section-heading section-heading--light">
                 Доступное оборудование
               </h2>
               {loading ? (
@@ -239,7 +211,7 @@ export default function HomePage() {
                     <Link
                       to={`/equipment/${equipment.id}`}
                       key={equipment.id}
-                      style={{ textDecoration: 'none' }}
+                      className="equipment-link"
                     >
                       <div className="equipment-card">
                         <div className="equipment-image">📦</div>
@@ -256,7 +228,7 @@ export default function HomePage() {
                               <FiUsers /> {equipment.capacity}
                             </span>
                           </div>
-                          <div style={{ marginTop: '12px' }}>
+                          <div className="equipment-status">
                             <span
                               className={`badge ${
                                 equipment.status === 'AVAILABLE'
@@ -281,80 +253,34 @@ export default function HomePage() {
       )}
 
       {/* Features Section */}
-      <section style={{
-        padding: '80px 20px',
-        background: 'white',
-      }}>
+      <section className="features">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
-              Почему выбирают нашу систему бронирования?
-            </h2>
-            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)', maxWidth: '600px', margin: '0 auto' }}>
-              Всё необходимое для быстрого и эффективного бронирования
+          <div className="features__header">
+            <h2 className="section-title">Почему выбирают нашу систему бронирования?</h2>
+            <p className="section-subtitle">
+              Всё необходимое для быстрого и эффективного бронирования университетского оборудования
             </p>
           </div>
 
           <div className="grid grid-3">
             {features.map((feature, index) => (
-              <div key={index} className="card feature-card" style={{
-                textAlign: 'center',
-                padding: '32px 24px',
-              }}>
-                <div className="feature-icon" style={{
-                  width: '80px',
-                  height: '80px',
-                  margin: '0 auto 20px',
-                  background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-                  borderRadius: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                }}>
+              <div key={index} className="card feature-card">
+                <div className="feature-icon-box">
                   {feature.icon}
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: 'var(--dark)' }}>
-                  {feature.title}
-                </h3>
-                <p style={{ fontSize: '15px', color: 'var(--gray)', lineHeight: '1.6' }}>
-                  {feature.description}
-                </p>
+                <h3 className="feature-title">{feature.title}</h3>
+                <p className="feature-desc">{feature.description}</p>
               </div>
             ))}
           </div>
 
           {/* Benefits */}
-          <div className="benefits-section" style={{
-            marginTop: '60px',
-            padding: '40px',
-            background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-            borderRadius: '16px',
-          }}>
-            <div className="benefits-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '24px',
-            }}>
+          <div className="benefits">
+            <div className="benefits__grid">
               {benefits.map((benefit, index) => (
-                <div key={index} className="benefit-item" style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  padding: '16px',
-                  background: 'white',
-                  borderRadius: '12px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                }}>
-                  <div style={{
-                    color: 'var(--primary)',
-                    fontSize: '24px',
-                  }}>
-                    {benefit.icon}
-                  </div>
-                  <span style={{ fontWeight: '500', color: 'var(--dark)' }}>
-                    {benefit.text}
-                  </span>
+                <div key={index} className="benefit-item">
+                  <span className="benefit-icon">{benefit.icon}</span>
+                  <span className="benefit-text">{benefit.text}</span>
                 </div>
               ))}
             </div>
@@ -364,36 +290,17 @@ export default function HomePage() {
 
       {/* CTA Section */}
       {!user && (
-        <section className="cta-section" style={{
-          padding: '80px 20px',
-          background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
-          textAlign: 'center',
-        }}>
+        <section className="cta">
           <div className="container">
-            <h2 className="cta-title" style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
-              Готовы начать?
-            </h2>
-            <p className="cta-subtitle" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
+            <h2 className="cta__title">Готовы начать?</h2>
+            <p className="cta__subtitle">
               Присоединяйтесь к университетскому сообществу и начните бронировать оборудование уже сегодня
             </p>
-            <div className="quick-actions" style={{ justifyContent: 'center' }}>
-              <Link to="/register" className="btn" style={{
-                background: 'white',
-                color: 'var(--primary)',
-                fontSize: '16px',
-                padding: '14px 32px',
-                fontWeight: '600',
-              }}>
+            <div className="cta__actions">
+              <Link to="/register" className="btn btn--lg btn--white">
                 Создать аккаунт
               </Link>
-              <Link to="/login" className="btn" style={{
-                background: 'transparent',
-                border: '2px solid white',
-                color: 'white',
-                fontSize: '16px',
-                padding: '14px 32px',
-                fontWeight: '600',
-              }}>
+              <Link to="/login" className="btn btn--lg btn--white-outline">
                 Уже есть аккаунт?
               </Link>
             </div>

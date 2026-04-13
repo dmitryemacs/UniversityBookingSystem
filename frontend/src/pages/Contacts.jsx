@@ -98,17 +98,10 @@ export default function Contacts() {
       <Header />
       
       {/* Hero Section */}
-      <section style={{
-        background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)',
-        padding: '80px 20px',
-        textAlign: 'center',
-        color: 'white',
-      }}>
+      <section className="hero">
         <div className="container">
-          <h1 style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px' }}>
-            Контакты
-          </h1>
-          <p style={{ fontSize: '20px', opacity: '0.9', maxWidth: '600px', margin: '0 auto' }}>
+          <h1 className="hero__title">Контакты</h1>
+          <p className="hero__subtitle">
             Есть вопросы? Мы здесь, чтобы помочь и ответить на все ваши вопросы.
           </p>
         </div>
