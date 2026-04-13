@@ -132,8 +132,8 @@ export default function AdminDashboard() {
                 <div className="empty-state-title">Пока нет бронирований</div>
               </div>
             ) : (
-              <div className="table-container">
-                <table className="table">
+              <div className="table-wrapper">
+                <table className="table table-responsive-card">
                   <thead>
                     <tr>
                       <th>Пользователь</th>
@@ -147,11 +147,11 @@ export default function AdminDashboard() {
                   <tbody>
                     {recentBookings.map((booking) => (
                       <tr key={booking.id}>
-                        <td>{booking.username}</td>
-                        <td>{booking.equipmentName}</td>
-                        <td>{new Date(booking.startTime).toLocaleDateString('ru-RU')}</td>
-                        <td>{new Date(booking.endTime).toLocaleDateString('ru-RU')}</td>
-                        <td>
+                        <td data-label="Пользователь">{booking.username}</td>
+                        <td data-label="Оборудование">{booking.equipmentName}</td>
+                        <td data-label="Начало">{new Date(booking.startTime).toLocaleDateString('ru-RU')}</td>
+                        <td data-label="Окончание">{new Date(booking.endTime).toLocaleDateString('ru-RU')}</td>
+                        <td data-label="Статус">
                           <span
                             className={`badge ${
                               booking.status === 'CONFIRMED'
@@ -166,23 +166,25 @@ export default function AdminDashboard() {
                             {booking.status === 'CONFIRMED' ? 'Подтверждено' : booking.status === 'PENDING' ? 'Ожидает' : booking.status === 'CANCELLED' ? 'Отменено' : booking.status}
                           </span>
                         </td>
-                        <td>
-                          {booking.status === 'PENDING' && (
-                            <div style={{ display: 'flex', gap: '8px' }}>
-                              <button
-                                onClick={() => handleUpdateStatus(booking.id, 'CONFIRMED')}
-                                className="btn btn-success btn-sm"
-                              >
-                                <FiCheckCircle /> Подтвердить
-                              </button>
-                              <button
-                                onClick={() => handleUpdateStatus(booking.id, 'REJECTED')}
-                                className="btn btn-danger btn-sm"
-                              >
-                                Отклонить
-                              </button>
-                            </div>
-                          )}
+                        <td data-label="">
+                          <div className="table-actions">
+                            {booking.status === 'PENDING' && (
+                              <>
+                                <button
+                                  onClick={() => handleUpdateStatus(booking.id, 'CONFIRMED')}
+                                  className="btn btn-success btn-sm"
+                                >
+                                  <FiCheckCircle /> Подтвердить
+                                </button>
+                                <button
+                                  onClick={() => handleUpdateStatus(booking.id, 'REJECTED')}
+                                  className="btn btn-danger btn-sm"
+                                >
+                                  Отклонить
+                                </button>
+                              </>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     ))}

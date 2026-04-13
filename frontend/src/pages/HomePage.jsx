@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { equipmentService } from '../services/equipmentService';
 import { bookingService } from '../services/bookingService';
 import Header from '../components/Header';
-import { FiGrid, FiCalendar, FiCheckCircle, FiClock, FiMapPin, FiUsers, FiArrowRight, 
+import { FiGrid, FiCalendar, FiCheckCircle, FiClock, FiMapPin, FiUsers, FiArrowRight,
          FiShield, FiZap, FiSmile, FiBook, FiAward, FiHeadphones } from 'react-icons/fi';
 
 export default function HomePage() {
@@ -90,24 +90,22 @@ export default function HomePage() {
   return (
     <div>
       <Header />
-      
+
       {/* Hero Section for Guests */}
       {!user && (
-        <section style={{
+        <section className="hero-section" style={{
           background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)',
-          padding: '80px 20px',
           textAlign: 'center',
           color: 'white',
         }}>
           <div className="container">
-            <h1 style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+            <h1 className="hero-title" style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
               Бронирование Университетского Оборудования
             </h1>
-            <p style={{ fontSize: '20px', marginBottom: '40px', opacity: '0.9', maxWidth: '600px', margin: '0 auto 40px' }}>
-              Бронируйте лабораторное оборудование, компьютеры, проекторы и многое другое с лёгкостью. 
-              Простая, быстрая и надёжная система бронирования для университетского сообщества.
+            <p className="hero-subtitle" style={{ fontSize: '20px', marginBottom: '40px', opacity: '0.9', maxWidth: '600px', margin: '0 auto 40px' }}>
+              Бронируйте лабораторное оборудование, компьютеры, проекторы и многое другое с лёгкостью.
             </p>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="quick-actions" style={{ justifyContent: 'center' }}>
               <Link to="/register" className="btn" style={{
                 background: 'white',
                 color: 'var(--primary)',
@@ -125,14 +123,14 @@ export default function HomePage() {
                 padding: '14px 32px',
                 fontWeight: '600',
               }}>
-                Смотреть Оборудование
+                Смотреть оборудование
               </Link>
             </div>
-            
+
             {/* Quick Stats */}
-            <div style={{
+            <div className="hero-stats" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
               gap: '24px',
               maxWidth: '800px',
               margin: '60px auto 0',
@@ -213,7 +211,7 @@ export default function HomePage() {
             {/* Quick Actions */}
             <div className="card" style={{ marginBottom: '32px' }}>
               <h2 style={{ marginBottom: '20px', fontSize: '18px' }}>Быстрые действия</h2>
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              <div className="quick-actions">
                 <Link to="/equipment" className="btn btn-primary">
                   <FiGrid /> Смотреть оборудование
                 </Link>
@@ -289,22 +287,21 @@ export default function HomePage() {
       }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
+            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
               Почему выбирают нашу систему бронирования?
             </h2>
-            <p style={{ fontSize: '18px', color: 'var(--gray)', maxWidth: '600px', margin: '0 auto' }}>
-              Всё необходимое для быстрого и эффективного бронирования университетского оборудования
+            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)', maxWidth: '600px', margin: '0 auto' }}>
+              Всё необходимое для быстрого и эффективного бронирования
             </p>
           </div>
 
           <div className="grid grid-3">
             {features.map((feature, index) => (
-              <div key={index} className="card" style={{
+              <div key={index} className="card feature-card" style={{
                 textAlign: 'center',
                 padding: '32px 24px',
-                transition: 'transform 0.3s',
               }}>
-                <div style={{
+                <div className="feature-icon" style={{
                   width: '80px',
                   height: '80px',
                   margin: '0 auto 20px',
@@ -328,19 +325,19 @@ export default function HomePage() {
           </div>
 
           {/* Benefits */}
-          <div style={{
+          <div className="benefits-section" style={{
             marginTop: '60px',
             padding: '40px',
             background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
             borderRadius: '16px',
           }}>
-            <div style={{
+            <div className="benefits-grid" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '24px',
             }}>
               {benefits.map((benefit, index) => (
-                <div key={index} style={{
+                <div key={index} className="benefit-item" style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
@@ -367,19 +364,19 @@ export default function HomePage() {
 
       {/* CTA Section */}
       {!user && (
-        <section style={{
+        <section className="cta-section" style={{
           padding: '80px 20px',
           background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
           textAlign: 'center',
         }}>
           <div className="container">
-            <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
+            <h2 className="cta-title" style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
               Готовы начать?
             </h2>
-            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
+            <p className="cta-subtitle" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
               Присоединяйтесь к университетскому сообществу и начните бронировать оборудование уже сегодня
             </p>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="quick-actions" style={{ justifyContent: 'center' }}>
               <Link to="/register" className="btn" style={{
                 background: 'white',
                 color: 'var(--primary)',

@@ -148,8 +148,8 @@ export default function EquipmentList() {
 
           {/* Search Bar */}
           <div className="card" style={{ marginBottom: '16px' }}>
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <div style={{ flex: 1, position: 'relative' }}>
+            <div className="search-bar">
+              <div style={{ flex: 1, position: 'relative', minWidth: '200px' }}>
                 <FiSearch style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--gray)' }} />
                 <input
                   type="text"
@@ -160,7 +160,7 @@ export default function EquipmentList() {
                   style={{ paddingLeft: '40px' }}
                 />
               </div>
-              <button 
+              <button
                 className="btn btn-secondary"
                 onClick={() => setShowFilters(!showFilters)}
               >

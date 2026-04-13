@@ -102,8 +102,8 @@ export default function UsersManagement() {
               <div className="spinner"></div>
             </div>
           ) : (
-            <div className="table-container">
-              <table className="table">
+            <div className="table-wrapper">
+              <table className="table table-responsive-card">
                 <thead>
                   <tr>
                     <th>Пользователь</th>
@@ -116,37 +116,25 @@ export default function UsersManagement() {
                 <tbody>
                   {users.map((user) => (
                     <tr key={user.id}>
-                      <td>
+                      <td data-label="Пользователь">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div
-                            style={{
-                              width: '40px',
-                              height: '40px',
-                              borderRadius: '50%',
-                              background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              color: 'white',
-                              fontWeight: '600',
-                            }}
-                          >
+                          <div className="user-avatar">
                             {user.username.charAt(0).toUpperCase()}
                           </div>
                           <span style={{ fontWeight: '500' }}>{user.username}</span>
                         </div>
                       </td>
-                      <td>
+                      <td data-label="Email">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--gray)' }}>
                           <FiMail /> {user.email}
                         </div>
                       </td>
-                      <td>
+                      <td data-label="Кафедра">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--gray)' }}>
                           <FiBriefcase /> {user.department}
                         </div>
                       </td>
-                      <td>
+                      <td data-label="Роль">
                         {editingUser === user.id ? (
                           <select
                             value={newRole}
@@ -165,30 +153,32 @@ export default function UsersManagement() {
                           </span>
                         )}
                       </td>
-                      <td>
-                        {editingUser === user.id ? (
-                          <div style={{ display: 'flex', gap: '8px' }}>
+                      <td data-label="">
+                        <div className="table-actions">
+                          {editingUser === user.id ? (
+                            <>
+                              <button
+                                onClick={() => saveRole(user.id)}
+                                className="btn btn-success btn-sm"
+                              >
+                                Сохранить
+                              </button>
+                              <button
+                                onClick={() => setEditingUser(null)}
+                                className="btn btn-secondary btn-sm"
+                              >
+                                Отмена
+                              </button>
+                            </>
+                          ) : (
                             <button
-                              onClick={() => saveRole(user.id)}
-                              className="btn btn-success btn-sm"
+                              onClick={() => handleUpdateRole(user.id, user.role)}
+                              className="btn btn-outline btn-sm"
                             >
-                              Сохранить
+                              Изменить роль
                             </button>
-                            <button
-                              onClick={() => setEditingUser(null)}
-                              className="btn btn-secondary btn-sm"
-                            >
-                              Отмена
-                            </button>
-                          </div>
-                        ) : (
-                          <button
-                            onClick={() => handleUpdateRole(user.id, user.role)}
-                            className="btn btn-outline btn-sm"
-                          >
-                            Изменить роль
-                          </button>
-                        )}
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}

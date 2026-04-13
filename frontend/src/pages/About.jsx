@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { useAuth } from '../context/AuthContext';
-import { FiUsers, FiCalendar, FiCheckCircle, FiShield, FiZap, FiHeart, FiGithub, FiMail } from 'react-icons/fi';
+import { FiUsers, FiCalendar, FiCheckCircle, FiShield, FiZap, FiHeart, FiMail } from 'react-icons/fi';
 
 export default function About() {
   const { user } = useAuth();
@@ -25,32 +25,31 @@ export default function About() {
   return (
     <div>
       <Header />
-      
+
       {/* Hero Section */}
-      <section style={{
+      <section className="hero-section" style={{
         background: 'linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)',
-        padding: '80px 20px',
         textAlign: 'center',
         color: 'white',
       }}>
         <div className="container">
-          <h1 style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px' }}>
+          <h1 className="hero-title" style={{ fontSize: '48px', fontWeight: '700', marginBottom: '20px' }}>
             О нашем проекте
           </h1>
-          <p style={{ fontSize: '20px', opacity: '0.9', maxWidth: '700px', margin: '0 auto' }}>
+          <p className="hero-subtitle" style={{ fontSize: '20px', opacity: '0.9', maxWidth: '700px', margin: '0 auto' }}>
             Делаем бронирование университетского оборудования простым, эффективным и доступным для всех
           </p>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section style={{
+      <section className="mission-section" style={{
         padding: '80px 20px',
         background: 'white',
       }}>
         <div className="container">
-          <div style={{ 
-            display: 'grid', 
+          <div className="mission-grid" style={{
+            display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '40px',
             alignItems: 'center',
@@ -60,12 +59,12 @@ export default function About() {
                 Наша миссия
               </h2>
               <p style={{ fontSize: '18px', color: 'var(--gray)', lineHeight: '1.8', marginBottom: '20px' }}>
-                Мы стремимся упростить процесс бронирования оборудования в университетах, 
-                облегчая студентам, преподавателям и исследователям доступ к инструментам, 
+                Мы стремимся упростить процесс бронирования оборудования в университетах,
+                облегчая студентам, преподавателям и исследователям доступ к инструментам,
                 необходимым для их учебной и исследовательской деятельности.
               </p>
               <p style={{ fontSize: '18px', color: 'var(--gray)', lineHeight: '1.8' }}>
-                Наша платформа устраняет сложности ручных систем бронирования, снижает конфликты 
+                Наша платформа устраняет сложности ручных систем бронирования, снижает конфликты
                 и двойные бронирования, обеспечивает видимость доступности оборудования в реальном времени.
               </p>
             </div>
@@ -74,7 +73,7 @@ export default function About() {
               background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
               borderRadius: '16px',
             }}>
-              <div style={{ display: 'grid', gap: '20px' }}>
+              <div className="mission-stats" style={{ display: 'grid', gap: '20px' }}>
                 {[
                   { icon: <FiUsers size={32} />, title: '500+', label: 'Активных пользователей' },
                   { icon: <FiCalendar size={32} />, title: '1000+', label: 'Бронирований в месяц' },
@@ -110,10 +109,10 @@ export default function About() {
       }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
+            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
               Наши ценности
             </h2>
-            <p style={{ fontSize: '18px', color: 'var(--gray)' }}>
+            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
               Что движет нами для создания лучшего опыта бронирования
             </p>
           </div>
@@ -175,15 +174,15 @@ export default function About() {
       }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
+            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
               Технологический стек
             </h2>
-            <p style={{ fontSize: '18px', color: 'var(--gray)' }}>
+            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
               Построено с использованием современных, надёжных технологий
             </p>
           </div>
 
-          <div style={{
+          <div className="tech-tags" style={{
             display: 'flex',
             flexWrap: 'wrap',
             gap: '16px',
@@ -217,10 +216,10 @@ export default function About() {
       }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
+            <h2 className="section-title" style={{ fontSize: '36px', fontWeight: '700', color: 'var(--dark)', marginBottom: '16px' }}>
               Наша команда
             </h2>
-            <p style={{ fontSize: '18px', color: 'var(--gray)' }}>
+            <p className="section-subtitle" style={{ fontSize: '18px', color: 'var(--gray)' }}>
               Талантливые люди, делающие это возможным
             </p>
           </div>
@@ -243,19 +242,19 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section style={{
+      <section className="cta-section" style={{
         padding: '80px 20px',
         background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
         textAlign: 'center',
       }}>
         <div className="container">
-          <h2 style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
+          <h2 className="cta-title" style={{ fontSize: '36px', fontWeight: '700', color: 'white', marginBottom: '16px' }}>
             Есть вопросы?
           </h2>
-          <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
+          <p className="cta-subtitle" style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)', marginBottom: '32px', maxWidth: '500px', margin: '0 auto 32px' }}>
             Мы здесь, чтобы помочь! Свяжитесь с нами в любое время.
           </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="quick-actions" style={{ justifyContent: 'center' }}>
             <Link to="/contacts" className="btn" style={{
               background: 'white',
               color: 'var(--primary)',

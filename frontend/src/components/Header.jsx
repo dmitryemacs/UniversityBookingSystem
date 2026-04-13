@@ -1,62 +1,77 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { FiHome, FiGrid, FiCalendar, FiSettings, FiLogOut, FiUsers, FiInfo, FiMail } from 'react-icons/fi';
+import { FiHome, FiGrid, FiCalendar, FiSettings, FiLogOut, FiUsers, FiInfo, FiMail, FiMenu, FiX } from 'react-icons/fi';
 
 export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
+    setMobileMenuOpen(false);
     navigate('/login');
+  };
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
   };
 
   return (
     <header className="header">
       <div className="header-content">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={handleNavClick}>
           <div className="logo-icon">📦</div>
-          <span>Бронирование Университетского Оборудования</span>
+          <span>Бронирование</span>
         </Link>
 
+        <button
+          className="header-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+        >
+          {mobileMenuOpen ? <FiX /> : <FiMenu />}
+        </button>
+
         <nav>
-          <ul className="nav-menu">
+          <ul className={`nav-menu ${mobileMenuOpen ? 'nav-menu--open' : ''}`}>
             <li>
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link" onClick={handleNavClick}>
                 <FiHome /> Главная
               </Link>
             </li>
             <li>
-              <Link to="/equipment" className="nav-link">
+              <Link to="/equipment" className="nav-link" onClick={handleNavClick}>
                 <FiGrid /> Оборудование
               </Link>
             </li>
             <li>
-              <Link to="/about" className="nav-link">
+              <Link to="/about" className="nav-link" onClick={handleNavClick}>
                 <FiInfo /> О проекте
               </Link>
             </li>
             <li>
-              <Link to="/contacts" className="nav-link">
+              <Link to="/contacts" className="nav-link" onClick={handleNavClick}>
                 <FiMail /> Контакты
               </Link>
             </li>
             {user && (
               <>
                 <li>
-                  <Link to="/my-bookings" className="nav-link">
+                  <Link to="/my-bookings" className="nav-link" onClick={handleNavClick}>
                     <FiCalendar /> Мои бронирования
                   </Link>
                 </li>
                 {user.role === 'ADMIN' && (
                   <>
                     <li>
-                      <Link to="/admin" className="nav-link">
+                      <Link to="/admin" className="nav-link" onClick={handleNavClick}>
                         <FiSettings /> Админ
                       </Link>
                     </li>
                     <li>
-                      <Link to="/admin/users" className="nav-link">
+                      <Link to="/admin/users" className="nav-link" onClick={handleNavClick}>
                         <FiUsers /> Пользователи
                       </Link>
                     </li>

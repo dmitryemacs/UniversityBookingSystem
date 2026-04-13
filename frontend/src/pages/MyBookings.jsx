@@ -129,8 +129,8 @@ export default function MyBookings() {
               )}
             </div>
           ) : (
-            <div className="table-container">
-              <table className="table">
+            <div className="table-wrapper">
+              <table className="table table-responsive-card">
                 <thead>
                   <tr>
                     <th>Оборудование</th>
@@ -146,7 +146,7 @@ export default function MyBookings() {
                     const statusBadge = getStatusBadge(booking.status);
                     return (
                       <tr key={booking.id}>
-                        <td>
+                        <td data-label="Оборудование">
                           <Link
                             to={`/equipment/${booking.equipmentId}`}
                             style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: '500' }}
@@ -154,35 +154,37 @@ export default function MyBookings() {
                             {booking.equipmentName}
                           </Link>
                         </td>
-                        <td>
+                        <td data-label="Начало">
                           {new Date(booking.startTime).toLocaleString('ru-RU')}
                         </td>
-                        <td>
+                        <td data-label="Окончание">
                           {new Date(booking.endTime).toLocaleString('ru-RU')}
                         </td>
-                        <td style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        <td data-label="Цель" style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {booking.purpose}
                         </td>
-                        <td>
+                        <td data-label="Статус">
                           <span className={`badge ${statusBadge.class}`}>
                             {statusBadge.icon}
                             <span style={{ marginLeft: '4px' }}>{statusBadge.text}</span>
                           </span>
                         </td>
-                        <td>
-                          {(booking.status === 'PENDING' || booking.status === 'CONFIRMED') && (
-                            <button
-                              onClick={() => handleCancel(booking.id)}
-                              className="btn btn-danger btn-sm"
-                            >
-                              Отменить
-                            </button>
-                          )}
-                          {booking.rejectionReason && (
-                            <span style={{ color: 'var(--danger)', fontSize: '13px' }}>
-                              Причина: {booking.rejectionReason}
-                            </span>
-                          )}
+                        <td data-label="">
+                          <div className="table-actions">
+                            {(booking.status === 'PENDING' || booking.status === 'CONFIRMED') && (
+                              <button
+                                onClick={() => handleCancel(booking.id)}
+                                className="btn btn-danger btn-sm"
+                              >
+                                Отменить
+                              </button>
+                            )}
+                            {booking.rejectionReason && (
+                              <span style={{ color: 'var(--danger)', fontSize: '13px' }}>
+                                Причина: {booking.rejectionReason}
+                              </span>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     );
