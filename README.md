@@ -2,6 +2,20 @@
 
 A web service for online booking of university equipment (laboratory devices, computers, projectors, etc.).
 
+## 🚀 Quick Deploy to Railway
+
+Deploy this application to Railway in minutes:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
+
+See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for detailed deployment instructions.
+
+**Quick Deploy:**
+```bash
+# Using Railway CLI
+./deploy-railway.sh
+```
+
 ## Technology Stack
 
 - **Backend**: Java 17+ with Spring Boot 3.2
@@ -182,27 +196,54 @@ mvn test
 
 ```
 univer_booking/
-├── docker-compose.yml
-├── Dockerfile
+├── docker-compose.yml              # Local development with Docker
+├── docker-compose.railway.yml      # Railway-like environment setup
+├── Dockerfile                      # Multi-stage build for Railway
+├── railway.json                    # Railway deployment configuration
+├── deploy-railway.sh               # Railway deployment helper script
+├── RAILWAY_DEPLOYMENT.md           # Detailed Railway deployment guide
 ├── pom.xml
 ├── .env.example
 ├── src/
 │   ├── main/
 │   │   ├── java/com/univer/booking/
-│   │   │   ├── config/          # Configuration classes
-│   │   │   ├── controller/      # REST controllers
-│   │   │   ├── dto/             # Data Transfer Objects
-│   │   │   ├── exception/       # Exception handling
-│   │   │   ├── model/           # JPA entities
-│   │   │   ├── repository/      # Data access layer
-│   │   │   ├── security/        # JWT security
-│   │   │   └── service/         # Business logic
+│   │   │   ├── config/             # Configuration classes
+│   │   │   │   └── RailwayConfig.java  # Railway DATABASE_URL parser
+│   │   │   ├── controller/         # REST controllers
+│   │   │   ├── dto/                # Data Transfer Objects
+│   │   │   ├── exception/          # Exception handling
+│   │   │   ├── model/              # JPA entities
+│   │   │   ├── repository/         # Data access layer
+│   │   │   ├── security/           # JWT security
+│   │   │   └── service/            # Business logic
 │   │   └── resources/
-│   │       ├── db/migration/    # Flyway migrations
+│   │       ├── db/migration/       # Flyway migrations
 │   │       └── application.yml
 │   └── test/
 └── README.md
 ```
+
+## Deployment
+
+### Deploy to Railway (Recommended)
+
+The application is fully configured for one-click deployment to Railway:
+
+1. **Automatic Database Setup**: Railway provides PostgreSQL automatically
+2. **Environment Variables**: The application parses Railway's `DATABASE_URL` 
+3. **Health Checks**: Built-in Docker health checks for monitoring
+4. **Frontend Bundling**: React frontend is bundled with the backend JAR
+
+See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for complete instructions.
+
+**Quick start:**
+```bash
+./deploy-railway.sh
+```
+
+### Local Development
+
+See the original sections above for local development instructions.
 
 ## Database Schema
 

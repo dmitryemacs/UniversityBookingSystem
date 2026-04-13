@@ -1,0 +1,10 @@
+# Files to exclude from Railway deployment
+node_modules/
+.git/
+*.md
+!README.md
+.env.example
+docker-compose.yml
+docker-compose.railway.yml
+deploy-railway.sh
+RAILWAY_DEPLOYMENT.md

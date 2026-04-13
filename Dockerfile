@@ -9,7 +9,7 @@ RUN npm install
 COPY frontend/ ./
 RUN npm run build
 
-# Final stage - use the existing backend image approach
+# Build backend
 FROM maven:3.9-eclipse-temurin-17 AS backend-builder
 
 WORKDIR /app
@@ -19,6 +19,7 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests -q
 
+# Runtime stage
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
@@ -30,5 +31,9 @@ COPY --from=backend-builder /app/target/*.jar app.jar
 COPY --from=frontend-builder /app/frontend/dist static/
 
 EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/api-docs || exit 1
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -3,9 +3,9 @@ spring:
     name: university-booking
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/booking
-    username: postgres
-    password: postgres
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/booking}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -35,10 +35,10 @@ spring:
             enable: true
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 jwt:
-  secret: mySecretKeyForJWTTokenGenerationMustBeLongEnough
+  secret: ${JWT_SECRET:mySecretKeyForJWTTokenGenerationMustBeLongEnough}
   expiration: 86400000
 
 app:
