@@ -49,12 +49,25 @@ export default function CreateBooking() {
       return;
     }
 
+    if (!formData.startTime || !formData.endTime) {
+      toast.error('Пожалуйста, выберите даты начала и окончания');
+      return;
+    }
+
+    const startDate = new Date(formData.startTime);
+    const endDate = new Date(formData.endTime);
+    
+    if (endDate <= startDate) {
+      toast.error('Дата окончания должна быть позже даты начала');
+      return;
+    }
+
     setSubmitting(true);
     try {
       const result = await bookingService.create({
         equipmentId: parseInt(formData.equipmentId),
-        startTime: new Date(formData.startTime).toISOString(),
-        endTime: new Date(formData.endTime).toISOString(),
+        startTime: startDate.toISOString(),
+        endTime: endDate.toISOString(),
         purpose: formData.purpose,
       });
 
@@ -65,7 +78,18 @@ export default function CreateBooking() {
         toast.error(result.message || 'Не удалось создать бронирование');
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Не удалось создать бронирование');
+      console.error('Booking creation error:', error);
+      const responseData = error.response?.data;
+      
+      // Handle validation errors with field error map
+      if (responseData?.data && typeof responseData.data === 'object') {
+        const fieldErrors = Object.values(responseData.data);
+        const message = fieldErrors.join(', ');
+        toast.error(message);
+      } else {
+        const message = responseData?.message || responseData?.error || 'Не удалось создать бронирование';
+        toast.error(message);
+      }
     } finally {
       setSubmitting(false);
     }

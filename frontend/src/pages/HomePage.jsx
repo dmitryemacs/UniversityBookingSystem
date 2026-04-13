@@ -26,7 +26,7 @@ export default function HomePage() {
     try {
       const [equipmentData, bookingsData] = await Promise.all([
         equipmentService.getAll(),
-        user ? bookingService.getUserBookings(user.id).catch(() => ({ data: [] })) : null,
+        user ? bookingService.getUserBookings().catch(() => ({ data: [] })) : null,
       ]);
 
       const allEquipment = equipmentData.data || [];

@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,6 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Bookings", description = "Booking management endpoints")
+@Slf4j
 public class BookingController {
 
     private final BookingService bookingService;
@@ -50,8 +52,14 @@ public class BookingController {
     public ResponseEntity<ApiResponse<BookingResponse>> createBooking(
             @AuthenticationPrincipal User user,
             @Valid @RequestBody BookingRequest request) {
-        BookingResponse booking = bookingService.createBooking(user.getId(), request);
-        return ResponseEntity.ok(ApiResponse.success("Booking created successfully", booking));
+        log.info("Creating booking for user {} with equipment {}", user.getId(), request.getEquipmentId());
+        try {
+            BookingResponse booking = bookingService.createBooking(user.getId(), request);
+            return ResponseEntity.ok(ApiResponse.success("Booking created successfully", booking));
+        } catch (Exception e) {
+            log.error("Failed to create booking: {}", e.getMessage(), e);
+            throw e;
+        }
     }
 
     @PostMapping("/{id}/cancel")

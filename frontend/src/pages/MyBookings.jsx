@@ -18,7 +18,7 @@ export default function MyBookings() {
 
   async function loadBookings() {
     try {
-      const response = await bookingService.getUserBookings(user.id);
+      const response = await bookingService.getUserBookings();
       setBookings(response.data || []);
     } catch (error) {
       toast.error('Не удалось загрузить бронирования');

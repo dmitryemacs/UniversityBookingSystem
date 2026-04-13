@@ -10,6 +10,7 @@ import com.univer.booking.model.User;
 import com.univer.booking.repository.BookingRepository;
 import com.univer.booking.repository.EquipmentRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class BookingService {
 
     private final BookingRepository bookingRepository;
@@ -45,6 +47,8 @@ public class BookingService {
     }
 
     public BookingResponse createBooking(Long userId, BookingRequest request) {
+        log.info("Creating booking for user {} with equipment {}", userId, request.getEquipmentId());
+        
         Equipment equipment = equipmentRepository.findById(request.getEquipmentId())
                 .orElseThrow(() -> new ResourceNotFoundException("Equipment not found"));
 
@@ -69,6 +73,7 @@ public class BookingService {
                 .build();
 
         Booking saved = bookingRepository.save(booking);
+        log.info("Booking created successfully with id {}", saved.getId());
         return toResponse(saved);
     }
 
